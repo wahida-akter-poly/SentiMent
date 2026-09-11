@@ -18,7 +18,7 @@ uvicorn app.main:app --reload
 
 Open <http://127.0.0.1:8000/>. The API is documented at `/docs`.
 
-## Train the baseline
+## Train the baseline carefully
 
 Provide a real UTF-8 CSV with `Review,Label` columns. Labels are learned from
 the supplied dataset (the script does not convert a binary dataset into a
@@ -45,13 +45,13 @@ training so it reloads the artifact.
 `POST /api/analyze` persists a row only after a model returns a prediction.
 Analytics return null percentages and empty collections when there is no data.
 
-## Database and migrations
+## Database and migrations here
 
 SQLAlchemy models live under `app/models`; Alembic is configured in
 `alembic.ini` and the initial migration is `alembic/versions/0001_create_analyses.py`.
 The development lifespan also creates missing tables for a first run.
 
-## Tests
+## Tests here
 
 ```powershell
 pytest -q
