@@ -1,0 +1,32 @@
+/* Dashboard page: overview metrics, charts, and review table */
+@import url("../../assets/styles/shared/app-shell.css");
+
+.insight-lists {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.insight-list h3 { margin: 0 0 12px; font-size: 14px; }
+.insight-list ol { margin: 0; padding-left: 22px; color: var(--text); font-size: 12px; }
+.insight-list li { padding: 5px 0; }
+@media (max-width: 800px) { .insight-lists { grid-template-columns: 1fr; } }
+.kpi-ready { animation: dashboard-card-in .42s ease both; }
+@keyframes dashboard-card-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* RAW CSS QUICK EDITS - DASHBOARD PAGE
+   Use this section for fast dashboard tweaks.
+   Search for: DASHBOARD PAGE RAW CSS
+*/
+.dashboard-page-raw-css {
+  --dashboard-raw-accent: #7cc7b4;
+  --dashboard-raw-soft: rgba(124, 199, 180, 0.18);
+}
+.dashboard-page-raw-css .kpi-ready {
+  border: 1px solid var(--dashboard-raw-soft);
+  transition: border-color .2s ease, transform .2s ease;
+}
+.dashboard-page-raw-css .kpi-ready:hover {
+  border-color: var(--dashboard-raw-accent);
+  transform: translateY(-2px);
+}

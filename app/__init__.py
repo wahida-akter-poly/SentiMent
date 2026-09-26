@@ -1,0 +1,1 @@
+"""SENTI-MIND application package."""

@@ -1,0 +1,31 @@
+/* About Project page: project vision, objectives, and technology information */
+@import url("../../assets/styles/shared/app-shell.css");
+
+.model-metadata { margin-top: 20px; }
+.model-metadata h3 { margin: 0 0 7px; font-size: 15px; }
+.model-metadata > p { color: var(--muted); font-size: 12px; }
+.model-metadata dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0 0; }
+.model-metadata dl div { min-width: 0; }
+.model-metadata dt { color: var(--muted); font-size: 11px; }
+.model-metadata dd { margin: 4px 0 0; overflow-wrap: anywhere; font-weight: 650; }
+@media (max-width: 620px) { .model-metadata dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.about-card { transition: transform .2s ease, box-shadow .2s ease; outline: none; }
+.about-card:hover, .about-card-active { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(33, 53, 84, .13); }
+
+/* RAW CSS QUICK EDITS - ABOUT PAGE
+   Use this section for fast about-page styling tweaks.
+   Search for: ABOUT PAGE RAW CSS
+*/
+.about-page-raw-css {
+  --about-raw-accent: #f0a35b;
+  --about-raw-soft: rgba(240, 163, 91, 0.18);
+}
+.about-page-raw-css .about-card {
+  border: 1px solid var(--about-raw-soft);
+  transition: border-color .2s ease, transform .2s ease;
+}
+.about-page-raw-css .about-card:hover,
+.about-page-raw-css .about-card-active {
+  border-color: var(--about-raw-accent);
+  transform: translateY(-4px);
+}

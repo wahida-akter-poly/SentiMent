@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SENTI-MIND | About</title>
+    <link rel="stylesheet" href="about-project.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="../home/index.html"
+          ><span class="brand-mark">S</span><span>SENTI-<b>MIND</b></span></a
+        >
+        <nav class="nav-menu">
+          <a class="nav-link" href="../home/index.html"><span>⌂</span> Home</a>
+          <a class="nav-link" href="../dashboard/index.html"><span>▦</span> Dashboard</a
+          ><a class="nav-link" href="../text-analysis/index.html"
+            ><span>⌁</span> Text Analysis</a
+          ><a class="nav-link" href="../batch-analysis/index.html"><span>⇧</span> Batch Analysis</a
+          ><a class="nav-link" href="../analytics/index.html"><span>◫</span> Analytics</a
+          ><a class="nav-link active" href="index.html"><span>ⓘ</span> About</a>
+        </nav>
+        <div class="sidebar-footer">
+          <span class="status-dot"></span> API-backed workspace<br /><small
+            >No bundled records or fabricated metrics</small
+          >
+        </div>
+      </aside>
+      <div class="sidebar-overlay" id="sidebarOverlay"></div>
+      <main class="main-area">
+        <header class="top-header">
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+            ☰
+          </button>
+          <div>
+            <h1>About Project</h1>
+            <p>Text sentiment intelligence and analytics across digital platforms</p>
+          </div>
+          <div class="header-right"><div class="avatar">SM</div></div>
+        </header>
+        <section class="content about-content">
+          <section class="about-hero">
+            <span class="eyebrow">CSE FINAL YEAR DESIGN PROJECT</span>
+            <h2>SENTI-MIND</h2>
+            <p>
+              One intelligent view of how people feel across the digital world.
+            </p>
+          </section>
+          <div class="about-grid">
+            <article class="panel about-card">
+              <span class="section-number">01</span>
+              <h3>Project Overview</h3>
+              <p>
+                SENTI-MIND is designed to collect, organize, and interpret
+                opinions expressed on digital platforms. The system will present
+                clear sentiment insights through an accessible dashboard.
+              </p>
+            </article>
+            <article class="panel about-card">
+              <span class="section-number">02</span>
+              <h3>Problem Statement</h3>
+              <p>
+                Digital feedback is high-volume, unstructured, and spread across
+                many channels. Manually understanding public opinion is slow,
+                inconsistent, and difficult to scale.
+              </p>
+            </article>
+            <article class="panel about-card">
+              <span class="section-number">03</span>
+              <h3>Proposed Solution</h3>
+              <p>
+                A text analysis platform that classifies feedback as positive,
+                neutral, negative, or derived mixed sentiment and visualizes
+                persisted patterns over time.
+              </p>
+            </article>
+            <article class="panel about-card">
+              <span class="section-number">04</span>
+              <h3>Objectives</h3>
+              <ul class="check-list">
+                <li>Analyze audience sentiment accurately</li>
+                <li>Compare sentiment across platforms</li>
+                <li>Visualize trends and actionable insights</li>
+                <li>Support data-driven decisions</li>
+              </ul>
+            </article>
+          </div>
+          <article class="panel multimodal-panel">
+            <div>
+              <span class="eyebrow">BEYOND TEXT</span>
+              <h2>Multimodal Analysis Concept</h2>
+              <p>
+                The future system will combine multiple forms of digital content
+                to build a more complete understanding of sentiment.
+              </p>
+            </div>
+            <div class="modality-grid">
+              <div>
+                <span>✎</span><b>Text</b><small>Reviews & comments</small>
+              </div>
+              <div>
+                <span>♫</span><b>Audio</b><small>Voice tone & speech</small>
+              </div>
+              <div>
+                <span>▻</span><b>Video</b><small>Visual expressions</small>
+              </div>
+              <div>
+                <span>◎</span><b>Social Media</b
+                ><small>Public conversations</small>
+              </div>
+              <div>
+                <span>◈</span><b>E-Commerce</b><small>Customer feedback</small>
+              </div>
+            </div>
+          </article>
+          <div class="about-grid bottom-about">
+            <article class="panel about-card">
+              <span class="section-number">05</span>
+              <h3>Future Scope</h3>
+              <p>
+                Future versions may include live platform integration,
+                multilingual analysis, audio and video emotion detection,
+                alerts, reporting, and personalized recommendations.
+              </p>
+            </article>
+            <article class="panel about-card">
+              <span class="section-number">06</span>
+              <h3>Technologies Used</h3>
+              <div class="tech-list">
+                <span>Python</span><span>FastAPI</span><span>SQLAlchemy</span
+                ><span>SQLite</span><span>Scikit-learn adapter</span
+                ><span>HTML5</span><span>CSS3</span><span>JavaScript</span
+                ><span>Chart.js</span>
+              </div>
+            </article>
+          </div>
+          <article class="panel model-metadata" aria-labelledby="modelMetadataHeading">
+            <h3 id="modelMetadataHeading">Model status and performance</h3>
+            <p id="modelMetadataDescription" role="status">Loading model metadata…</p>
+            <dl>
+              <div><dt>Version</dt><dd id="aboutModelVersion">Unavailable</dd></div>
+              <div><dt>Labels</dt><dd id="aboutModelLabels">Unavailable</dd></div>
+              <div><dt>Accuracy</dt><dd id="aboutModelAccuracy">Unavailable</dd></div>
+              <div><dt>Macro F1</dt><dd id="aboutModelF1">Unavailable</dd></div>
+              <div><dt>Training rows</dt><dd id="aboutTrainRows">Unavailable</dd></div>
+              <div><dt>Test rows</dt><dd id="aboutTestRows">Unavailable</dd></div>
+            </dl>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="../../assets/scripts/shared/app-interactions.js"></script>
+    <script src="about-project.js"></script>
+  </body>
+</html>

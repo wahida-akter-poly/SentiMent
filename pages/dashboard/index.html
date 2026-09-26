@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SENTI-MIND | Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="../home/index.html"
+          ><span class="brand-mark">S</span><span>SENTI-<b>MIND</b></span></a
+        >
+        <nav class="nav-menu" aria-label="Main navigation">
+          <a class="nav-link" href="../home/index.html"><span>⌂</span> Home</a>
+          <a class="nav-link active" href="index.html"
+            ><span>▦</span> Dashboard</a
+          >
+          <a class="nav-link" href="../text-analysis/index.html"
+            ><span>⌁</span> Text Analysis</a
+          >
+          <a class="nav-link" href="../batch-analysis/index.html"><span>⇧</span> Batch Analysis</a>
+          <a class="nav-link" href="../analytics/index.html"><span>◫</span> Analytics</a>
+          <a class="nav-link" href="../about-project/index.html"><span>ⓘ</span> About</a>
+        </nav>
+        <div class="sidebar-footer">
+          <span class="status-dot"></span> <span class="model-status">Checking model…</span><br /><small
+            >Connected SENTI-MIND workspace</small
+          >
+        </div>
+      </aside>
+      <div class="sidebar-overlay" id="sidebarOverlay"></div>
+      <main class="main-area">
+        <header class="top-header">
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+            ☰
+          </button>
+          <div>
+            <h1>Dashboard</h1>
+            <p>Monitor sentiment across your digital platforms.</p>
+          </div>
+          <div class="header-right">
+            <span class="date-badge" id="dataStatus">Loading data…</span>
+            <div class="avatar">SM</div>
+          </div>
+        </header>
+        <section class="content">
+          <div class="page-intro">
+            <div>
+              <span class="eyebrow">OVERVIEW</span>
+              <h2>Sentiment at a glance</h2>
+            </div>
+            <a href="../text-analysis/index.html" class="btn btn-primary btn-small"
+              >+ Analyze New Text</a
+            >
+          </div>
+          <div class="kpi-grid">
+            <article class="kpi-card">
+              <div class="kpi-icon blue">▤</div>
+              <div>
+                <p>Total Reviews</p>
+                <h3 id="totalReviews">—</h3>
+                <small>Stored analyses</small>
+              </div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-icon positive-bg">☺</div>
+              <div>
+                <p>Positive</p>
+                <h3 id="positivePercent">—</h3>
+                <small>Available records</small>
+              </div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-icon neutral-bg">●</div>
+              <div>
+                <p>Neutral</p>
+                <h3 id="neutralPercent">—</h3>
+                <small>Available records</small>
+              </div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-icon negative-bg">☹</div>
+              <div>
+                <p>Negative</p>
+                <h3 id="negativePercent">—</h3>
+                <small>Available records</small>
+              </div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-icon blue">◐</div>
+              <div><p>Mixed</p><h3 id="mixedPercent">—</h3><small>Positive and negative evidence</small></div>
+            </article>
+          </div>
+          <div class="chart-grid primary-charts">
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Sentiment Distribution</h3>
+                  <p>All analyzed feedback</p>
+                </div>
+                <button class="icon-button" aria-label="Chart options">
+                  •••
+                </button>
+              </div>
+              <div class="doughnut-layout">
+                <div class="chart-box doughnut-box">
+                  <canvas id="distributionChart"></canvas>
+                </div>
+                <ul class="chart-legend">
+                  <li><i class="legend-positive"></i>Positive <b id="dashboardPositiveLegend">—</b></li>
+                  <li><i class="legend-neutral"></i>Neutral <b id="dashboardNeutralLegend">—</b></li>
+                  <li><i class="legend-negative"></i>Negative <b id="dashboardNegativeLegend">—</b></li>
+                  <li><i class="legend-mixed"></i>Mixed <b id="dashboardMixedLegend">—</b></li>
+                </ul>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Source Volume</h3>
+                  <p>Persisted analyses grouped by source</p>
+                </div>
+                <span class="mini-label">All stored data</span>
+              </div>
+              <div class="chart-box"><canvas id="platformChart"></canvas></div>
+            </article>
+          </div>
+          <article class="panel trend-panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Sentiment Trend</h3>
+                <p>Review sentiment over the last 7 days</p>
+              </div>
+              <div class="legend-inline">
+                <span><i class="legend-positive"></i> Positive</span
+                ><span><i class="legend-neutral"></i> Neutral</span
+                ><span><i class="legend-negative"></i> Negative</span
+                ><span><i class="legend-mixed"></i> Mixed</span>
+              </div>
+            </div>
+            <div class="chart-box chart-tall">
+              <canvas id="trendChart"></canvas>
+            </div>
+          </article>
+          <div class="insight-lists">
+            <article class="panel insight-list"><h3>Top aspects</h3><ol id="dashboardTopAspects"><li class="data-empty">No aspect data yet.</li></ol></article>
+            <article class="panel insight-list"><h3>Top topics</h3><ol id="dashboardTopTopics"><li class="data-empty">No topic data yet.</li></ol></article>
+            <article class="panel insight-list"><h3>Top complaints / pain points</h3><ol id="dashboardTopComplaints"><li class="data-empty">No complaint data yet.</li></ol></article>
+          </div>
+          <article class="panel table-panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Recent Analysis</h3>
+                <p>Latest reviews analyzed by SENTI-MIND</p>
+              </div>
+              <a href="../analytics/index.html" class="text-link">View all →</a>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Review</th>
+                    <th>Platform</th>
+                    <th>Sentiment</th>
+                    <th>Confidence</th>
+                    <th>Analyzed</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td colspan="5" class="data-empty">Loading records…</td></tr></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../assets/scripts/shared/app-interactions.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

@@ -1,10 +1,16 @@
 # SENTI-MIND
 
-SENTI-MIND is an API-backed sentiment workspace. The existing vanilla HTML/CSS
-pages are served by FastAPI, while SQLite stores only successful analyses.
-There are no seed records, fallback predictions, or fabricated dashboard
-metrics. Until a trained artifact exists, the analysis endpoint deliberately
-returns `503 MODEL_UNAVAILABLE`.
+SENTI-MIND is an API-backed sentiment workspace. FastAPI serves the HTML/CSS/JS
+pages, and SQLite stores successful model-backed analyses. A saved analysis
+contains document sentiment, independent sentence predictions, final Mixed
+derivation, aspect sentiment, topics, supporting evidence, and a deterministic
+summary. Batch CSV import, filtered history, filtered CSV export, and
+database-derived dashboard analytics are included.
+
+There are no seed reviews, fallback predictions, or fabricated dashboard
+metrics. No trained model artifact or labeled training dataset is currently
+bundled. Until a real artifact is supplied, the interface reports **Model Not
+Trained** and `POST /api/analyze` returns `503 MODEL_UNAVAILABLE`.
 
 ## Run locally
 
@@ -18,7 +24,7 @@ uvicorn app.main:app --reload
 
 Open <http://127.0.0.1:8000/>. The API is documented at `/docs`.
 
-## Train the baseline carefully
+## Train the baseline
 
 Provide a real UTF-8 CSV with `Review,Label` columns. Labels are learned from
 the supplied dataset (the script does not convert a binary dataset into a
@@ -39,19 +45,28 @@ training so it reloads the artifact.
 - `GET /api/health` — liveness and model availability
 - `GET /api/model/status` — loaded model metadata or the honest unavailable reason
 - `POST /api/analyze` — `{ "text": "...", "source": "optional" }`
-- `GET /api/analyses?limit=25&offset=0` — persisted results
-- `GET /api/dashboard/summary` and `/api/analytics/summary` — calculated summaries
+- `POST /api/batch/analyze` — `{ "items": [{ "text": "...", "source": "..." }] }`, up to 50 per request
+- `POST /api/analyses/upload` — CSV upload API
+- `GET /api/analyses?limit=25&offset=0&sentiment=&source=&q=&start=&end=` — filtered persisted results
+- `GET /api/analyses/export.csv` — filtered CSV export
+- `GET /api/dashboard/summary` and `/api/analytics/summary` — DB-derived counts, percentages, confidence, sources, daily trend, aspects, topics, and negative-aspect complaints
 
-`POST /api/analyze` persists a row only after a model returns a prediction.
-Analytics return null percentages and empty collections when there is no data.
+`POST /api/analyze` persists one parent row only after the configured model
+returns a prediction. Sentence and aspect inference use that same classifier.
+Mixed is derived from confidently positive and negative sentence results; it is
+not a classifier label or probability. Analytics return null percentages and
+empty collections when there is no data. Batch Analysis is available at
+`/pages/batch-analysis/` and sends CSV rows to `POST /api/batch/analyze`.
 
-## Database and migrations here
+## Database and migrations
 
 SQLAlchemy models live under `app/models`; Alembic is configured in
-`alembic.ini` and the initial migration is `alembic/versions/0001_create_analyses.py`.
-The development lifespan also creates missing tables for a first run.
+`alembic.ini`. `0001_create_analyses.py` creates the original table and
+`0002_add_analysis_metadata.py` safely adds the intelligence fields. Apply with
+`python -m alembic upgrade head`. The development lifespan also creates missing
+tables for a first run; use Alembic for upgrades to an existing database.
 
-## Tests here
+## Tests
 
 ```powershell
 pytest -q
@@ -59,3 +74,7 @@ pytest -q
 
 Configuration can be copied from `.env.example`. Environment variables use the
 `SENTI_MIND_` prefix.
+
+See [DEMO-CHECKLIST.md](DEMO-CHECKLIST.md) for a no-fabricated-data demo
+procedure and [FINAL-IMPLEMENTATION-STATUS.md](FINAL-IMPLEMENTATION-STATUS.md)
+for current verification status and limitations.

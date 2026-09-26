@@ -1,0 +1,85 @@
+/* Text Analysis page: input form, result card, and session history */
+@import url("../../assets/styles/shared/app-shell.css");
+
+/* RAW CSS QUICK EDITS - TEXT ANALYSIS PAGE
+   Use this section for fast text analysis styling tweaks.
+   Search for: TEXT ANALYSIS PAGE RAW CSS
+*/
+.text-analysis-page-raw-css {
+  --text-analysis-raw-accent: #5fa8e8;
+  --text-analysis-raw-soft: rgba(95, 168, 232, 0.18);
+}
+.text-analysis-page-raw-css .result-card,
+.text-analysis-page-raw-css .analysis-input {
+  border: 1px solid var(--text-analysis-raw-soft);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.text-analysis-page-raw-css .result-card:hover,
+.text-analysis-page-raw-css .analysis-input:focus {
+  border-color: var(--text-analysis-raw-accent);
+  box-shadow: 0 10px 22px rgba(95, 168, 232, 0.12);
+}
+.source-input,
+.history-filters input,
+.history-filters select {
+  min-height: 38px;
+  border: 1px solid #dce3ed;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+}
+.source-input {
+  width: 100%;
+  margin-top: 7px;
+}
+.input-panel > label:not(.sr-only) {
+  display: block;
+  margin-top: 12px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 650;
+}
+.input-panel > label span {
+  color: var(--muted);
+  font-weight: 400;
+}
+.intelligence-details {
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+  padding-top: 15px;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.intelligence-details h3 {
+  font-size: 12px;
+  margin: 13px 0 4px;
+}
+.intelligence-details ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.intelligence-details p {
+  margin: 6px 0;
+}
+.history-filters {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(110px, 1fr)) auto auto;
+  align-items: end;
+  gap: 9px;
+  padding: 0 0 16px;
+}
+.history-filters label {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 11px;
+}
+@media (max-width: 1100px) {
+  .history-filters { grid-template-columns: repeat(3, minmax(110px, 1fr)); }
+}
+@media (max-width: 560px) {
+  .history-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

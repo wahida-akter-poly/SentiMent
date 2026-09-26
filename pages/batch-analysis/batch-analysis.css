@@ -1,0 +1,85 @@
+@import url("../../assets/styles/shared/app-shell.css");
+
+.batch-panel,
+.batch-results {
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.file-drop {
+  min-height: 190px;
+  border: 1px dashed #9aabc3;
+  background: linear-gradient(135deg, #f5fbf8, #f3f6ff 70%, #fff8ed);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-align: center;
+  cursor: pointer;
+}
+.file-drop:focus-within,
+.file-drop:hover {
+  border-color: #24866b;
+  background: #f0faf6;
+}
+.file-drop strong {
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+.file-drop span:not(.upload-symbol) {
+  color: var(--muted);
+  font-size: 12px;
+}
+.upload-symbol {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #167658;
+  background: #dff4ea;
+  font-size: 22px;
+}
+.file-drop input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.batch-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 18px;
+}
+.batch-actions [role="status"] {
+  color: var(--muted);
+  font-size: 12px;
+}
+.batch-actions button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+.batch-errors {
+  color: #a3343b;
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+.batch-errors:empty {
+  display: none;
+}
+.batch-results .table-scroll {
+  margin-top: 12px;
+}
+@media (max-width: 640px) {
+  .batch-panel,
+  .batch-results {
+    padding: 17px;
+  }
+  .batch-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

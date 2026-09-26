@@ -1,0 +1,31 @@
+/* Analytics page: data summaries, visualisations, and insights */
+@import url("../../assets/styles/shared/app-shell.css");
+
+/* RAW CSS QUICK EDITS - ANALYTICS PAGE
+   Use this section for fast analytics styling tweaks.
+   Search for: ANALYTICS PAGE RAW CSS
+*/
+.analytics-page-raw-css {
+  --analytics-raw-accent: #8e7dcb;
+  --analytics-raw-soft: rgba(142, 125, 203, 0.18);
+}
+.analytics-page-raw-css .chart-panel,
+.analytics-page-raw-css .insight-card {
+  border: 1px solid var(--analytics-raw-soft);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.analytics-page-raw-css .chart-panel:hover,
+.analytics-page-raw-css .insight-card:hover {
+  border-color: var(--analytics-raw-accent);
+  box-shadow: 0 12px 28px rgba(30, 41, 59, 0.08);
+}
+.insight-lists {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.insight-list h3 { margin: 0 0 12px; font-size: 14px; }
+.insight-list ol { margin: 0; padding-left: 22px; color: var(--text); font-size: 12px; }
+.insight-list li { padding: 5px 0; }
+@media (max-width: 800px) { .insight-lists { grid-template-columns: 1fr; } }

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SENTI-MIND sentiment analysis project home page" />
+    <title>SENTI-MIND | Home</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body class="home-page">
+    <div class="home-glow glow-one"></div><div class="home-glow glow-two"></div>
+    <header class="home-header">
+      <a class="home-brand" href="index.html"><span class="brand-mark">S</span><span>SENTI-<b>MIND</b></span></a>
+      <a class="home-about-link" href="../about-project/index.html">About the project <span>→</span></a>
+    </header>
+    <main class="home-main">
+      <section class="home-hero">
+        <div class="home-copy">
+          <span class="home-eyebrow"><i></i> CSE FINAL YEAR DESIGN PROJECT</span>
+          <h1>Every opinion has a signal. <em>Find yours.</em></h1>
+          <p>SENTI-MIND brings feedback, patterns, and sentiment together in one clear digital workspace.</p>
+          <a class="home-cta" href="#explore">Explore the workspace <span>↓</span></a>
+        </div>
+        <div class="home-insight-card">
+          <div class="insight-card-top"><span>PERSISTED SENTIMENT SNAPSHOT</span><i class="pulse-dot"></i></div>
+          <div class="sentiment-ring"><strong id="homePositive">—</strong><span>no records yet</span></div>
+          <div class="sentiment-bars">
+            <div><span>Positive</span><i><b class="positive-bar"></b></i><strong id="homePositiveBar">—</strong></div>
+            <div><span>Neutral</span><i><b class="neutral-bar"></b></i><strong id="homeNeutralBar">—</strong></div>
+            <div><span>Negative</span><i><b class="negative-bar"></b></i><strong id="homeNegativeBar">—</strong></div>
+          </div>
+        </div>
+      </section>
+      <section class="home-destinations" id="explore">
+        <div class="destinations-heading"><div><span class="home-eyebrow">START EXPLORING</span><h2>Choose a destination</h2></div><p>Each section is a separate page, designed for one clear purpose.</p></div>
+        <div class="destination-grid">
+          <a class="destination-card dashboard-card" href="../dashboard/index.html"><span class="destination-number">01</span><span class="destination-icon">◫</span><h3>Dashboard</h3><p>View your complete sentiment overview at a glance.</p><span class="destination-go">Open dashboard <b>→</b></span></a>
+          <a class="destination-card analysis-card" href="../text-analysis/index.html"><span class="destination-number">02</span><span class="destination-icon">⌁</span><h3>Text Analysis</h3><p>Analyze any review, comment, or customer message.</p><span class="destination-go">Analyze text <b>→</b></span></a>
+          <a class="destination-card batch-card" href="../batch-analysis/index.html"><span class="destination-number">03</span><span class="destination-icon">⇧</span><h3>Batch Analysis</h3><p>Import and analyze reviews from a CSV file.</p><span class="destination-go">Import reviews <b>→</b></span></a>
+          <a class="destination-card analytics-card" href="../analytics/index.html"><span class="destination-number">04</span><span class="destination-icon">◌</span><h3>Analytics</h3><p>Discover trends and actionable platform insights.</p><span class="destination-go">View analytics <b>→</b></span></a>
+          <a class="destination-card about-card-home" href="../about-project/index.html"><span class="destination-number">05</span><span class="destination-icon">i</span><h3>About Project</h3><p>Learn the vision behind the SENTI-MIND system.</p><span class="destination-go">Read more <b>→</b></span></a>
+        </div>
+      </section>
+    </main>
+    <footer class="home-footer"><span>© 2026 SENTI-MIND</span><span>Analyze. Understand. Improve.</span></footer>
+    <script src="home.js"></script>
+  </body>
+</html>

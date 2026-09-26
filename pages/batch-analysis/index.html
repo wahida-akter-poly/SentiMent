@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SENTI-MIND | Batch Analysis</title>
+    <link rel="stylesheet" href="batch-analysis.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="../home/index.html"><span class="brand-mark">S</span><span>SENTI-<b>MIND</b></span></a>
+        <nav class="nav-menu" aria-label="Main navigation">
+          <a class="nav-link" href="../home/index.html"><span>⌂</span> Home</a>
+          <a class="nav-link" href="../dashboard/index.html"><span>▦</span> Dashboard</a>
+          <a class="nav-link" href="../text-analysis/index.html"><span>⌁</span> Text Analysis</a>
+          <a class="nav-link active" href="index.html"><span>⇧</span> Batch Analysis</a>
+          <a class="nav-link" href="../analytics/index.html"><span>◫</span> Analytics</a>
+          <a class="nav-link" href="../about-project/index.html"><span>ⓘ</span> About</a>
+        </nav>
+        <div class="sidebar-footer"><span class="status-dot"></span> <span class="model-status">Checking model…</span><br /><small>Connected SENTI-MIND workspace</small></div>
+      </aside>
+      <div class="sidebar-overlay" id="sidebarOverlay"></div>
+      <main class="main-area">
+        <header class="top-header">
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+          <div><h1>Batch Analysis</h1><p>Analyze and save reviews from a CSV file.</p></div>
+          <div class="header-right"><span class="date-badge">CSV upload</span><div class="avatar">SM</div></div>
+        </header>
+        <section class="content">
+          <div class="page-intro">
+            <div><span class="eyebrow">BULK WORKFLOW</span><h2>Import review data</h2><p class="intro-text">Each valid row becomes one persisted analysis with its source tag.</p></div>
+            <button class="btn btn-outline btn-small" id="downloadTemplate" type="button">⇩ Download CSV template</button>
+          </div>
+          <section class="panel batch-panel" aria-labelledby="uploadHeading">
+            <div class="panel-heading"><div><h3 id="uploadHeading">Choose a CSV file</h3><p>Required column: Review. Optional column: Source.</p></div></div>
+            <label class="file-drop" for="csvFile"><span class="upload-symbol" aria-hidden="true">⇧</span><strong id="fileName">Select a CSV file</strong><span id="fileMeta">Rows are analyzed in groups of up to 50.</span><input id="csvFile" type="file" accept=".csv,text/csv" /></label>
+            <div class="batch-actions"><span id="batchStatus" role="status" aria-live="polite">No file selected</span><button class="btn btn-primary" id="analyzeBatch" type="button" disabled>Analyze CSV</button></div>
+          </section>
+          <section class="panel batch-results" aria-labelledby="resultsHeading">
+            <div class="panel-heading"><div><h3 id="resultsHeading">Import results</h3><p id="resultSummary">Saved results and row-level failures will appear here.</p></div></div>
+            <div id="batchErrors" class="batch-errors" role="status" aria-live="polite"></div>
+            <div class="table-scroll"><table><thead><tr><th>Review</th><th>Source</th><th>Sentiment</th><th>Confidence</th></tr></thead><tbody id="batchResultsBody"><tr><td colspan="4" class="data-empty">Choose a CSV to begin.</td></tr></tbody></table></div>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script src="../../assets/scripts/shared/app-interactions.js"></script>
+    <script src="batch-analysis.js"></script>
+  </body>
+</html>
