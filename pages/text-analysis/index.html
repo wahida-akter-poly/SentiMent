@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SENTI-MIND | Text Analysis</title>
+    <link rel="stylesheet" href="text-analysis.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="../home/index.html"
+          ><span class="brand-mark">S</span><span>SENTI-<b>MIND</b></span></a
+        >
+        <nav class="nav-menu">
+          <a class="nav-link" href="../home/index.html"><span>⌂</span> Home</a>
+          <a class="nav-link" href="../dashboard/index.html"><span>▦</span> Dashboard</a
+          ><a class="nav-link active" href="index.html"
+            ><span>⌁</span> Text Analysis</a
+          ><a class="nav-link" href="../batch-analysis/index.html"><span>⇧</span> Batch Analysis</a
+          ><a class="nav-link" href="../analytics/index.html"><span>◫</span> Analytics</a
+          ><a class="nav-link" href="../about-project/index.html"><span>ⓘ</span> About</a>
+        </nav>
+        <div class="sidebar-footer">
+          <span class="status-dot"></span> <span class="model-status">Checking model…</span><br /><small
+            >Connected SENTI-MIND workspace</small
+          >
+        </div>
+      </aside>
+      <div class="sidebar-overlay" id="sidebarOverlay"></div>
+      <main class="main-area">
+        <header class="top-header">
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+            ☰
+          </button>
+          <div>
+            <h1>Text Analysis</h1>
+            <p>Analyze the sentiment of any written feedback.</p>
+          </div>
+          <div class="header-right">
+            <span class="date-badge">◷ API connected</span>
+            <div class="avatar">SM</div>
+          </div>
+        </header>
+        <section class="content">
+          <div class="page-intro">
+            <div>
+              <span class="eyebrow">SENTIMENT DETECTOR</span>
+              <h2>Analyze text feedback</h2>
+              <p class="intro-text">
+                Enter a review, comment, or message to run the configured model.
+              </p>
+            </div>
+          </div>
+          <div class="analysis-grid">
+            <article class="panel input-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Enter Text</h3>
+                  <p>Submitted text is saved with its model-backed analysis.</p>
+                </div>
+              </div>
+              <label class="sr-only" for="analysisText">Text to analyze</label
+              ><textarea
+                id="analysisText"
+                maxlength="5000"
+                placeholder="Example: The product quality is amazing and I would definitely recommend it to my friends!"
+              ></textarea>
+              <label for="sourceTag">Source <span>(optional)</span></label>
+              <input id="sourceTag" class="source-input" type="text" maxlength="80" placeholder="Website, store, support…" />
+              <div class="input-footer">
+                <span id="characterCount">0 / 5000 characters</span
+                ><button class="btn btn-primary" id="analyzeButton">
+                  ⌁ Analyze Sentiment
+                </button>
+              </div>
+            </article>
+            <article class="panel result-panel" id="resultCard">
+              <div class="empty-result" id="emptyResult">
+                <div class="empty-icon">⌁</div>
+                <h3>Waiting for your text</h3>
+                <p>
+                  Enter feedback and select Analyze Sentiment. A trained model
+                  is required; no fallback prediction is fabricated.
+                </p>
+              </div>
+              <div class="analysis-result hidden" id="analysisResult">
+                <div class="result-top">
+                  <div>
+                    <p class="result-label">DETECTED SENTIMENT</p>
+                    <h2 id="resultSentiment">—</h2>
+                    <p id="resultDescription">
+                      —
+                    </p>
+                  </div>
+                  <div class="sentiment-face positive-face" id="resultFace">
+                    ☺
+                  </div>
+                </div>
+                <div class="confidence-row">
+                  <span>Confidence Score</span
+                  ><strong id="confidenceScore">—</strong>
+                </div>
+                <div class="progress-track">
+                  <div
+                    class="progress-fill positive-fill"
+                    id="confidenceBar"
+                    style="width: 0%"
+                  ></div>
+                </div>
+                <div class="probabilities">
+                  <div class="prob-row">
+                    <div><span>☺</span> Positive</div>
+                    <b                     id="positiveProbability">—</b>
+                  </div>
+                  <div class="progress-track small">
+                    <div
+                      class="progress-fill positive-fill"
+                      id="positiveBar"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                  <div class="prob-row">
+                    <div><span>●</span> Neutral</div>
+                    <b id="neutralProbability">—</b>
+                  </div>
+                  <div class="progress-track small">
+                    <div
+                      class="progress-fill neutral-fill"
+                      id="neutralBar"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                  <div class="prob-row">
+                    <div><span>☹</span> Negative</div>
+                    <b id="negativeProbability">—</b>
+                  </div>
+                  <div class="progress-track small">
+                    <div
+                      class="progress-fill negative-fill"
+                      id="negativeBar"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="intelligence-details">
+                  <p><strong>Model sentiment:</strong> <span id="modelSentiment">—</span></p>
+                  <p><strong>Summary:</strong> <span id="summaryText">—</span></p>
+                  <h3>Sentence results</h3><ul id="sentenceResults"></ul>
+                  <h3>Aspect sentiment</h3><ul id="aspectResults"></ul>
+                  <p><strong>Topics:</strong> <span id="topicResults">—</span></p>
+                  <p><strong>Supporting evidence:</strong> <span id="evidenceResults">—</span></p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <article class="panel table-panel recent-text">
+            <div class="panel-heading">
+              <div>
+                <h3>Recent Analysis</h3>
+                <p>Saved records from the application database</p>
+              </div>
+            </div>
+            <form class="history-filters" id="historyFilters">
+              <label>Search text<input id="historyQuery" type="search" placeholder="Find review text" /></label>
+              <label>Source<input id="historySource" type="search" placeholder="Any source" /></label>
+              <label>Sentiment<select id="historySentiment"><option value="">All</option><option>positive</option><option>neutral</option><option>negative</option><option>mixed</option></select></label>
+              <label>From<input id="historyStart" type="date" /></label>
+              <label>To<input id="historyEnd" type="date" /></label>
+              <button class="btn btn-outline btn-small" type="submit">Apply filters</button>
+              <button class="btn btn-outline btn-small" type="reset" id="resetHistoryFilters">Clear</button>
+            </form>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Text</th>
+                    <th>Sentiment</th>
+                    <th>Confidence</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody id="recentAnalysisBody">
+                  <tr><td colspan="4" class="data-empty">Loading records…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="../../assets/scripts/shared/app-interactions.js"></script>
+    <script src="text-analysis.js"></script>
+  </body>
+</html>

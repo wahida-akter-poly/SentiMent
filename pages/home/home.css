@@ -1,0 +1,21 @@
+/* Home page: visual entry point and page navigation */
+@import url("../../assets/styles/shared/app-shell.css");
+.destination-card { opacity: 0; transform: translateY(18px); }
+.destination-card.is-visible { opacity: 1; transform: translateY(0); transition: opacity .45s ease, transform .45s ease, box-shadow .25s, border-color .25s; }
+
+/* RAW CSS QUICK EDITS - HOME PAGE
+   Use this section for fast home page styling tweaks.
+   Search for: HOME PAGE RAW CSS
+*/
+.home-page-raw-css {
+  --home-raw-accent: #8ea0c8;
+  --home-raw-soft: rgba(142, 160, 200, 0.16);
+}
+.home-page-raw-css .destination-card {
+  border: 1px solid var(--home-raw-soft);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.home-page-raw-css .destination-card:hover {
+  border-color: var(--home-raw-accent);
+  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.08);
+}
